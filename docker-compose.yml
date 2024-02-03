@@ -1,0 +1,15 @@
+version: '2.2'
+
+services:
+    website:
+      container_name: simplewebsite-website
+      image: simplewebsite-website:${APP_ENV}_${APP_VERSION}
+      volumes:
+        - ./:/var/www/workdir
+      networks:
+        - simplewebsite_network
+      restart: unless-stopped
+networks:
+  simplewebsite_network:
+    external: false
+    name: simplewebsite_network
